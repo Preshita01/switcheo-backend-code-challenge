@@ -1,7 +1,46 @@
 syntax = "proto3";
+
 package crude.crude;
+
+import "crude/crude/resource.proto";
 
 option go_package = "crude/x/crude/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc CreateResource (MsgCreateResource) returns (MsgCreateResourceResponse);
+  rpc UpdateResource (MsgUpdateResource) returns (MsgUpdateResourceResponse);
+  rpc DeleteResource (MsgDeleteResource) returns (MsgDeleteResourceResponse);
+}
+message MsgCreateResource {
+  string creator   = 1;
+  string rName     = 2;
+  string rCategory = 3;
+  string rColour   = 4;
+  string rSize     = 5;
+  uint64 rQuantity = 6;
+}
+
+message MsgCreateResourceResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateResource {
+  string creator   = 1;
+  uint64 id        = 2;
+  string rName     = 3;
+  string rCategory = 4;
+  string rColour   = 5;
+  string rSize     = 6;
+  uint64 rQuantity = 7;
+}
+
+message MsgUpdateResourceResponse {}
+
+message MsgDeleteResource {
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeleteResourceResponse {}
+

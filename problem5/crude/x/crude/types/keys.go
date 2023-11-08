@@ -17,3 +17,8 @@ const (
 func KeyPrefix(p string) []byte {
 	return []byte(p)
 }
+
+const (
+	ResourceKey      = "Resource/value/"
+	ResourceCountKey = "Resource/count/"
+)

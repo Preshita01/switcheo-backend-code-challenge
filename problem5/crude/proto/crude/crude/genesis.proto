@@ -1,12 +1,17 @@
 syntax = "proto3";
+
 package crude.crude;
 
 import "gogoproto/gogo.proto";
 import "crude/crude/params.proto";
+import "crude/crude/resource.proto";
 
 option go_package = "crude/x/crude/types";
 
 // GenesisState defines the crude module's genesis state.
 message GenesisState {
-  Params params = 1 [(gogoproto.nullable) = false];
+           Params   params        = 1 [(gogoproto.nullable) = false];
+  repeated Resource resourceList  = 2 [(gogoproto.nullable) = false];
+           uint64   resourceCount = 3;
 }
+
